@@ -34,14 +34,11 @@ public class ResponseProcessorTests
     }
 
     [Test]
-    public void WillThrowForNullStatus()
+    public void WillNotProcessForNullStatus()
     {
         var response = new Response();
         var processor = new ResponseProcessor();
 
-        Assert.That(
-            () => processor.ProcessResponse(response),
-            Throws.TypeOf<NullReferenceException>()
-        );
+        Assert.That(processor.ProcessResponse(response), Is.False);
     }
 }
